@@ -63,6 +63,50 @@ Array(200).fill().forEach(addStar)
 const spaceTexture = new THREE.TextureLoader().load('/images/milky_way.jpg')
 scene.background = spaceTexture
 
+//  moon
+const moonTexture = new THREE.TextureLoader().load('/images/moon.jpg')
+const moonSurface = new THREE.TextureLoader().load('/images/moon_surface_texture.jpg')
+const moon = new THREE.Mesh(
+    new THREE.SphereGeometry(3, 32, 32),
+    new THREE.MeshBasicMaterial({
+        map: moonTexture,
+        normalMap: moonSurface  
+    })
+)
+
+scene.add(moon)
+
+//  moon
+const planetTexture = new THREE.TextureLoader().load('/images/venus_surface.jpg')
+const planet = new THREE.Mesh(
+    new THREE.SphereGeometry(3, 32, 32),
+    new THREE.MeshBasicMaterial({
+        map: planetTexture,
+    })
+)
+
+scene.add(planet)
+
+planet.position.z=30
+planet.position.x=-10
+
+function moveCamera() {
+    const t = document.body.getBoundingClientRect().top
+    moon.rotation.x += 0.05
+    moon.rotation.y += 0.075
+    moon.rotation.z += 0.05
+
+    planet.rotation.x += 0.05
+    planet.rotation.y += 0.075
+    planet.rotation.z += 0.05
+
+    camera.position.z = t * -0.01
+    camera.position.x = t * -0.0002
+    camera.rotation.y = t * -0.0002
+}
+
+document.body.onscroll = moveCamera
+
 //  torus movement
 function animate() {
     requestAnimationFrame(animate)
