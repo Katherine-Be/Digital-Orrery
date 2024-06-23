@@ -32,9 +32,9 @@ scene.add(ambientLight, pointLight)
 
 const lightHelper = new THREE.PointLightHelper(pointLight)
 
-// grid
-const gridHelper = new THREE.GridHelper(200, 50)
-scene.add(lightHelper, gridHelper) // shows light source
+// // grid
+// const gridHelper = new THREE.GridHelper(200, 50)
+// scene.add(lightHelper, gridHelper) // shows light source
 
 //allow mouse perspective control
 const controls = new OrbitControls(camera, renderer.domElement)
@@ -58,15 +58,20 @@ const spaceTexture = new THREE.TextureLoader().load('/images/milky_way.jpg')
 scene.background = spaceTexture
 
 //  sun
-const sunTexture = new THREE.TextureLoader().load('/images/sun.jpg')
+const sunTexture = new THREE.TextureLoader().load('/images/8k_sun.jpg')
 const sun = new THREE.Mesh(
-    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.SphereGeometry(20, 32, 32),
     new THREE.MeshBasicMaterial({
         map: sunTexture
     })
 )
 
 scene.add(sun)
+sun.position.x=0
+sun.position.y=0
+sun.position.z=-50
+
+
 
 //  mercury
 const mercuryTexture = new THREE.TextureLoader().load('/images/mercury_surface.jpg')
@@ -77,8 +82,8 @@ const mercury = new THREE.Mesh(
     })
 )
 scene.add(mercury)
-mercury.position.x=-2.5
-mercury.position.y=-2
+mercury.position.x=-.5
+mercury.position.y=0
 mercury.position.z=25
 
 
@@ -91,8 +96,8 @@ const venus = new THREE.Mesh(
     })
 )
 scene.add(venus)
-venus.position.x=-3
-venus.position.y=-2
+venus.position.x=-1
+venus.position.y=0
 venus.position.z=27
 
 //  earth
@@ -106,8 +111,8 @@ const earth = new THREE.Mesh(
 
 scene.add(earth)
 
-earth.position.x=-3.5
-earth.position.y=-2
+earth.position.x=-1.5
+earth.position.y=0
 earth.position.z=30
 
 //  mars
@@ -121,8 +126,8 @@ const mars = new THREE.Mesh(
 
 scene.add(mars)
 
-mars.position.x=-3.75
-mars.position.y=-2
+mars.position.x=-3
+mars.position.y=0
 mars.position.z=32
 
 //  jupiter
@@ -137,7 +142,7 @@ const jupiter = new THREE.Mesh(
 scene.add(jupiter)
 
 jupiter.position.x=-8
-jupiter.position.y=-2
+jupiter.position.y=0
 jupiter.position.z=40
 
 //  saturn
@@ -151,7 +156,7 @@ const saturn = new THREE.Mesh(
 
 scene.add(saturn)
 saturn.position.x=-11
-saturn.position.y=-2
+saturn.position.y=0
 saturn.position.z=55
 
 //  saturn rings
@@ -162,16 +167,17 @@ const ring = new THREE.Mesh(
         map: ringTexture
      })
 )
-ring.rotateX(1.5)
+ring.rotateX(1.7)
 
 
 scene.add(ring)
 ring.position.x=-11
-ring.position.y=-2
+ring.position.y=0
 ring.position.z=55
 
 //  uranus
 const uranusTexture = new THREE.TextureLoader().load('/images/uranus_surface.jpg')
+// uranusTexture.rotation = 2
 const uranus = new THREE.Mesh(
     new THREE.SphereGeometry(1.5, 60, 60),
     new THREE.MeshBasicMaterial({
@@ -181,7 +187,7 @@ const uranus = new THREE.Mesh(
 
 scene.add(uranus)
 uranus.position.x=-11.5
-uranus.position.y=-2
+uranus.position.y=0
 uranus.position.z=65
 
 //  neptune
@@ -195,7 +201,7 @@ const neptune = new THREE.Mesh(
 
 scene.add(neptune)
 neptune.position.x=-12
-neptune.position.y=-2
+neptune.position.y=0
 neptune.position.z=70
 
 //  pluto
@@ -209,37 +215,42 @@ const pluto = new THREE.Mesh(
 
 scene.add(pluto)
 pluto.position.x=-12.
-pluto.position.y=-2
+pluto.position.y=0
 pluto.position.z=75
 
 
 
-// function moveCamera() {
-//     const t = document.body.getBoundingClientRect().top;
-//     moon.rotation.x += 0.05;
-//     moon.rotation.y += 0.075;
-//     moon.rotation.z += 0.05;
+function moveCamera() {
+    const t = document.body.getBoundingClientRect().top;
+    // moon.rotation.x += 0.05;
+    // moon.rotation.y += 0.075;
+    // moon.rotation.z += 0.05;
 
-//     planet.rotation.x += 0.05;
-//     planet.rotation.y += 1;
-//     planet.rotation.z += 0.05;
+    // planet.rotation.x += 0.05;
+    // planet.rotation.y += 1;
+    // planet.rotation.z += 0.05;
 
-//     // Adjusted multipliers for a more noticeable effect
-//     camera.position.z = t * -0.01; // Adjust this value to control zoom effect on scroll
-//     camera.position.x = t * -0.002; // Adjust for horizontal movement
-//     camera.position.y = t * -0.002; // Adjust for vertical movement
-//     camera.rotation.y = t * -0.002; // Adjust for rotation effect
-//     camera.rotation.z = t * -0.002; // Adjust for rotation effect
-// }
+    // Adjusted multipliers for a more noticeable effect
+    camera.position.z = t * -0.01; // Adjust this value to control zoom effect on scroll
+    camera.position.x = t * -0.002; // Adjust for horizontal movement
+    camera.position.y = t * -0.002; // Adjust for vertical movement
+    camera.rotation.y = t * -0.002; // Adjust for rotation effect
+    camera.rotation.z = t * -0.002; // Adjust for rotation effect
+}
 
-// document.body.onscroll = moveCamera;
+document.body.onscroll = moveCamera;
 
-//  torus movement
+//  saturn ring movement
 function animate() {
     requestAnimationFrame(animate)
 
-ring.rotateOnAxis(new THREE.Vector3(0, 0, 1.25), 0.01)
-
+    ring.rotateOnAxis(new THREE.Vector3(0, 0, 1), 0.01)
+    earth.rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.01)
+    mars.rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.01)
+    jupiter.rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.03)
+    saturn.rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.03)
+    uranus.rotateOnAxis(new THREE.Vector3(0, 0, 1), 0.02)
+    neptune.rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.02)
 
     controls.update()
 
