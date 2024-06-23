@@ -4,6 +4,11 @@ canvas {
   left: 0;
 }
 
+body {
+  position:absolute;
+  height: 5000px;
+}
+/* 
 main {
   position: absolute;
 
@@ -17,7 +22,6 @@ header{
 
 header * {
   display: flex;
-  /* justify-content: center; */
   font-size: 50px;
   font-family: auto;
   margin-bottom: 30px;
@@ -42,7 +46,7 @@ header img {
 
 .myProjects { 
   margin: 10px;
-  position: relative; /*Readme>Resources>FigCaption*/
+  position: relative;
   height: fit-content;
   border: solid -10px transparent;
   border-radius: 10%;
@@ -64,15 +68,15 @@ section article:hover {
 #firstProject figure, #firstProject img {
   height: 340px;
   width: 340px;
-  object-fit: cover; /*see Object Fit reference in readme.md*/
+  object-fit: cover; 
   border-radius:10%; 
 }
 
 figcaption {
   font-size: 160%;
-  position: absolute; /*Readme>Resources>FigCaption*/
-  top: 10px; /* Adjust as needed */
-  background-color: rgba(252, 249, 249, 0.5); /* Add a background color for better readability */
+  position: absolute; 
+  top: 10px; 
+  background-color: rgba(252, 249, 249, 0.5); 
   color: black;
   font-weight: bold;
   border-radius: 5%;
@@ -102,4 +106,4 @@ figcaption {
   padding:10px;
   width: fit-content;
   margin: 10px auto;
-}
+} */

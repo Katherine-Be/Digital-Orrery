@@ -23,12 +23,6 @@ camera.position.setZ(30)
 
 renderer.render(scene, camera)
 
-//  torus
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
-const material = new THREE.MeshStandardMaterial({ color: 0xFF6347 })
-const torus = new THREE.Mesh(geometry, material)
-scene.add(torus)
-
 //  lighting
 const pointLight = new THREE.PointLight(0xffffff, 20,0, 2) // arguments color, intensity, distance, decay
 pointLight.position.set(0, 2, 5)
@@ -63,57 +57,189 @@ Array(200).fill().forEach(addStar)
 const spaceTexture = new THREE.TextureLoader().load('/images/milky_way.jpg')
 scene.background = spaceTexture
 
-//  moon
-const moonTexture = new THREE.TextureLoader().load('/images/moon.jpg')
-const moonSurface = new THREE.TextureLoader().load('/images/moon_surface_texture.jpg')
-const moon = new THREE.Mesh(
-    new THREE.SphereGeometry(3, 32, 32),
+//  sun
+const sunTexture = new THREE.TextureLoader().load('/images/sun.jpg')
+const sun = new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
     new THREE.MeshBasicMaterial({
-        map: moonTexture,
-        normalMap: moonSurface  
+        map: sunTexture
     })
 )
 
-scene.add(moon)
+scene.add(sun)
 
-//  moon
-const planetTexture = new THREE.TextureLoader().load('/images/venus_surface.jpg')
-const planet = new THREE.Mesh(
-    new THREE.SphereGeometry(3, 32, 32),
+//  mercury
+const mercuryTexture = new THREE.TextureLoader().load('/images/mercury_surface.jpg')
+const mercury = new THREE.Mesh(
+    new THREE.SphereGeometry(.15, 60, 60),
     new THREE.MeshBasicMaterial({
-        map: planetTexture,
+        map: mercuryTexture
+    })
+)
+scene.add(mercury)
+mercury.position.x=-2.5
+mercury.position.y=-2
+mercury.position.z=25
+
+
+//  venus
+const venusTexture = new THREE.TextureLoader().load('/images/venus_surface.jpg')
+const venus = new THREE.Mesh(
+    new THREE.SphereGeometry(.37, 32, 32),
+    new THREE.MeshBasicMaterial({
+        map: venusTexture
+    })
+)
+scene.add(venus)
+venus.position.x=-3
+venus.position.y=-2
+venus.position.z=27
+
+//  earth
+const earthTexture = new THREE.TextureLoader().load('/images/earth_surface.jpg')
+const earth = new THREE.Mesh(
+    new THREE.SphereGeometry(.39, 60, 60),
+    new THREE.MeshBasicMaterial({
+        map: earthTexture
     })
 )
 
-scene.add(planet)
+scene.add(earth)
 
-planet.position.z=30
-planet.position.x=-10
+earth.position.x=-3.5
+earth.position.y=-2
+earth.position.z=30
 
-function moveCamera() {
-    const t = document.body.getBoundingClientRect().top
-    moon.rotation.x += 0.05
-    moon.rotation.y += 0.075
-    moon.rotation.z += 0.05
+//  mars
+const marsTexture = new THREE.TextureLoader().load('/images/mars_surface.jpg')
+const mars = new THREE.Mesh(
+    new THREE.SphereGeometry(.21, 60, 60),
+    new THREE.MeshBasicMaterial({
+        map: marsTexture
+    })
+)
 
-    planet.rotation.x += 0.05
-    planet.rotation.y += 0.075
-    planet.rotation.z += 0.05
+scene.add(mars)
 
-    camera.position.z = t * -0.01
-    camera.position.x = t * -0.0002
-    camera.rotation.y = t * -0.0002
-}
+mars.position.x=-3.75
+mars.position.y=-2
+mars.position.z=32
 
-document.body.onscroll = moveCamera
+//  jupiter
+const jupiterTexture = new THREE.TextureLoader().load('/images/jupiter_surface.jpg')
+const jupiter = new THREE.Mesh(
+    new THREE.SphereGeometry(4.3, 60, 60),
+    new THREE.MeshBasicMaterial({
+        map: jupiterTexture
+    })
+)
+
+scene.add(jupiter)
+
+jupiter.position.x=-8
+jupiter.position.y=-2
+jupiter.position.z=40
+
+//  saturn
+const saturnTexture = new THREE.TextureLoader().load('/images/saturn_surface.jpg')
+const saturn = new THREE.Mesh(
+    new THREE.SphereGeometry(3.6, 60, 60),
+    new THREE.MeshBasicMaterial({
+        map: saturnTexture
+    })
+)
+
+scene.add(saturn)
+saturn.position.x=-11
+saturn.position.y=-2
+saturn.position.z=55
+
+//  saturn rings
+const ringTexture = new THREE.TextureLoader().load('/images/jupiter_surface.jpg')
+const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(3.7, 3, 2, 55),
+    new THREE.MeshBasicMaterial({
+        map: ringTexture
+     })
+)
+ring.rotateX(1.5)
+
+
+scene.add(ring)
+ring.position.x=-11
+ring.position.y=-2
+ring.position.z=55
+
+//  uranus
+const uranusTexture = new THREE.TextureLoader().load('/images/uranus_surface.jpg')
+const uranus = new THREE.Mesh(
+    new THREE.SphereGeometry(1.5, 60, 60),
+    new THREE.MeshBasicMaterial({
+        map: uranusTexture,
+    })
+)
+
+scene.add(uranus)
+uranus.position.x=-11.5
+uranus.position.y=-2
+uranus.position.z=65
+
+//  neptune
+const neptuneTexture = new THREE.TextureLoader().load('/images/neptune_surface.jpg')
+const neptune = new THREE.Mesh(
+    new THREE.SphereGeometry(1.5, 60, 60),
+    new THREE.MeshBasicMaterial({
+        map: neptuneTexture,
+    })
+)
+
+scene.add(neptune)
+neptune.position.x=-12
+neptune.position.y=-2
+neptune.position.z=70
+
+//  pluto
+const plutoTexture = new THREE.TextureLoader().load('/images/pluto_surface.jpg')
+const pluto = new THREE.Mesh(
+    new THREE.SphereGeometry(.1, 60, 60),
+    new THREE.MeshBasicMaterial({
+        map: plutoTexture,
+    })
+)
+
+scene.add(pluto)
+pluto.position.x=-12.
+pluto.position.y=-2
+pluto.position.z=75
+
+
+
+// function moveCamera() {
+//     const t = document.body.getBoundingClientRect().top;
+//     moon.rotation.x += 0.05;
+//     moon.rotation.y += 0.075;
+//     moon.rotation.z += 0.05;
+
+//     planet.rotation.x += 0.05;
+//     planet.rotation.y += 1;
+//     planet.rotation.z += 0.05;
+
+//     // Adjusted multipliers for a more noticeable effect
+//     camera.position.z = t * -0.01; // Adjust this value to control zoom effect on scroll
+//     camera.position.x = t * -0.002; // Adjust for horizontal movement
+//     camera.position.y = t * -0.002; // Adjust for vertical movement
+//     camera.rotation.y = t * -0.002; // Adjust for rotation effect
+//     camera.rotation.z = t * -0.002; // Adjust for rotation effect
+// }
+
+// document.body.onscroll = moveCamera;
 
 //  torus movement
 function animate() {
     requestAnimationFrame(animate)
 
-    torus.rotation.x += 0.01
-    torus.rotation.y += 0.005
-    torus.rotation.z += 0.01
+ring.rotateOnAxis(new THREE.Vector3(0, 0, 1.25), 0.01)
+
 
     controls.update()
 
