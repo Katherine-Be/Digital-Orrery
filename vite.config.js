@@ -4,12 +4,12 @@
 //     // base: '/Trying_THREEJS/'
 //   }
 
-export default defineConfig({
-    base: "/Trying_THREEJS/",
-    plugins: [],
-    resolve: {
-      alias: [
+// export default defineConfig({
+//     base: "/Trying_THREEJS/",
+//     plugins: [],
+//     resolve: {
+//       alias: [
         
-      ]
-    },
-  })
+//       ]
+//     },
+//   })
