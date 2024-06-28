@@ -60,7 +60,7 @@ scene.background = spaceTexture
 //  sun
 const sunTexture = new THREE.TextureLoader().load('8k_sun.jpg')
 const sun = new THREE.Mesh(
-    new THREE.SphereGeometry(20, 32, 32),
+    new THREE.SphereGeometry(43.2, 32, 32),
     new THREE.MeshBasicMaterial({
         map: sunTexture
     })
